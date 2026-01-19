@@ -2,12 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+  color: #1e293b;
 }
 
 .gradient-text {
@@ -18,9 +19,9 @@ body {
 }
 
 .glass-effect {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(100, 116, 139, 0.2);
 }
 
 .card-hover {
@@ -100,3 +101,50 @@ body {
 .float-animation {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Underline animation for nav items */
+@keyframes underline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: black;
+  animation: underline 0.3s ease forwards;
+}
+
+.nav-link:hover::after {
+  animation: underline 0.3s ease forwards;
+}
+
+/* Section fade-in animation */
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: sectionFadeIn 0.6s ease-out;
+}
+

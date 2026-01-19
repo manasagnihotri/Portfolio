@@ -2,14 +2,11 @@
 
 import { ParticleSystem } from "../../../utils/particlePhysics";
 
-//let particleSystemInstance = null;
-
 const particleCanvasModel = {
   canvas: null,
   ctx: null,
   particleSystem: null,
   animationId: null,
-  time: 0,
   isRunning: false,
 
   initialize(canvas) {
@@ -17,7 +14,6 @@ const particleCanvasModel = {
     this.ctx = canvas.getContext('2d');
     this.particleSystem = new ParticleSystem(canvas);
     this.isRunning = true;
-    //particleSystemInstance = this.particleSystem;
     return this.particleSystem;
   },
 
@@ -39,14 +35,6 @@ const particleCanvasModel = {
 
   setRunning(value) {
     this.isRunning = value;
-  },
-
-  incrementTime() {
-    this.time++;
-  },
-
-  getTime() {
-    return this.time;
   }
 };
 

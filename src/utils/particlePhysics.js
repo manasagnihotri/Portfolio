@@ -1,5 +1,5 @@
-// Particle Physics Engine
-// Handles particle creation, physics simulation, and rendering
+// Particle Physics Engine - Standard Implementation
+// Simple particle system with basic physics
 
 class Particle {
   constructor(x, y, canvas) {
@@ -7,44 +7,24 @@ class Particle {
     this.y = y;
     this.canvas = canvas;
     
-    // Velocity
-    this.vx = (Math.random() - 0.5) * 2;
-    this.vy = (Math.random() - 0.5) * 2;
-    
-    // Acceleration
-    this.ax = 0;
-    this.ay = 0;
+    // Simple velocity
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5 - 0.5; // Slight downward bias
     
     // Properties
-    this.radius = Math.random() * 2 + 1;
-    this.mass = this.radius;
-    this.friction = 0.95;
-    this.lifetime = Math.random() * 100 + 50;
-    this.maxLifetime = this.lifetime;
-    this.color = `hsl(${Math.random() * 60 + 180}, 100%, ${Math.random() * 30 + 50}%)`;
+    this.radius = 1.5;
+    this.lifetime = 100;
+    this.maxLifetime = 100;
+    this.color = 'rgba(56, 189, 248, 0.5)'; // Simple cyan color
+    this.shimmer = Math.sin(Math.random() * Math.PI); // Subtle shimmer variation
   }
 
-  // Apply force to particle
-  applyForce(force) {
-    this.ax += force.x / this.mass;
-    this.ay += force.y / this.mass;
-  }
-
-  // Update particle physics each frame
+  // Update particle position
   update() {
-    // Apply friction
-    this.vx *= this.friction;
-    this.vy *= this.friction;
+    // Simple gravity
+    this.vy += 0.05;
     
-    // Apply acceleration to velocity
-    this.vx += this.ax;
-    this.vy += this.ay;
-    
-    // Reset acceleration each frame
-    this.ax = 0;
-    this.ay = 0;
-    
-    // Update position
+    // Apply velocity
     this.x += this.vx;
     this.y += this.vy;
     
@@ -61,11 +41,21 @@ class Particle {
   // Render particle to canvas
   render(ctx) {
     const alpha = this.lifetime / this.maxLifetime;
-    ctx.globalAlpha = alpha * 0.6;
+    // Very minimal glow effect
+    const glowAlpha = alpha * 0.2 * (0.8 + this.shimmer * 0.2);
+    
+    ctx.globalAlpha = glowAlpha;
     ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius + 0.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Core particle with slightly higher opacity
+    ctx.globalAlpha = glowAlpha * 1.5;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
+    
     ctx.globalAlpha = 1;
   }
 
@@ -79,10 +69,8 @@ class ParticleSystem {
   constructor(canvas) {
     this.canvas = canvas;
     this.particles = [];
-    this.gravity = { x: 0, y: 0.1 };
-    this.wind = { x: 0.01, y: 0 };
-    this.maxParticles = 100;
-    this.emissionRate = 2;
+    this.maxParticles = 50;
+    this.emissionRate = 1;
   }
 
   // Emit new particles
@@ -97,22 +85,12 @@ class ParticleSystem {
   // Emit particles at random positions
   emitRandom() {
     const x = Math.random() * this.canvas.width;
-    const y = Math.random() * this.canvas.height;
+    const y = Math.random() * this.canvas.height * 0.3; // Top third of screen
     this.emit(x, y, this.emissionRate);
-  }
-
-  // Apply forces to all particles
-  applyForces() {
-    this.particles.forEach(particle => {
-      particle.applyForce(this.gravity);
-      particle.applyForce(this.wind);
-    });
   }
 
   // Update all particles
   update() {
-    this.applyForces();
-    
     this.particles.forEach(particle => {
       particle.update();
     });
@@ -126,16 +104,6 @@ class ParticleSystem {
     this.particles.forEach(particle => {
       particle.render(ctx);
     });
-  }
-
-  // Update wind with sine wave for natural motion
-  updateWind(time) {
-    this.wind.x = Math.sin(time * 0.005) * 0.05;
-  }
-
-  // Set gravity
-  setGravity(x, y) {
-    this.gravity = { x, y };
   }
 
   // Get particle count

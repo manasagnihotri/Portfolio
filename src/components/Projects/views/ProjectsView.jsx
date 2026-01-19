@@ -1,32 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import projectsModel from '../models/projectsModel';
+import DetailModalView from '../../DetailModal/views/DetailModalView';
 
 export default function ProjectsView() {
   const projects = projectsModel.getProjects();
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
+
+  const colors = [
+    { bg: 'bg-yellow-300', border: 'border-black' },
+    { bg: 'bg-green-400', border: 'border-black' },
+    { bg: 'bg-pink-400', border: 'border-black' },
+    { bg: 'bg-purple-400', border: 'border-black' },
+    { bg: 'bg-orange-400', border: 'border-black' },
+  ];
+
+  const getColor = (index) => colors[index % colors.length];
 
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="section-title">Featured Projects</div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className="glass-effect p-8 rounded-lg card-hover flex flex-col">
-              <h3 className="text-xl font-semibold text-cyan-300 mb-2">{project.title}</h3>
-              <p className="text-sm text-slate-400 mb-4">{project.subtitle}</p>
-              <p className="text-slate-300 mb-4 flex-grow">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.skills.map((skill, idx) => (
-                  <span key={idx} className="skill-tag">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+    <>
+      <section id="projects" className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-5xl md:text-6xl font-bold text-black uppercase tracking-tight">
+              Projects
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, index) => {
+              const color = getColor(index);
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleProjectClick(project)}
+                  className={`${color.bg} border-4 ${color.border} p-8 md:p-10 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-3 shadow-lg`}
+                >
+                  {/* Category Tag */}
+                  <div className="mb-4 inline-block">
+                    <div className="bg-black text-white px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider">
+                      {project.category || 'PROJECT'}
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl md:text-3xl font-black text-black uppercase mb-4 tracking-tight">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-black font-semibold text-sm md:text-base leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  {/* Skills Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.skills.slice(0, 3).map((skill, idx) => (
+                      <span key={idx} className="bg-black text-white px-3 py-1 font-bold text-xs uppercase">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Click to view - Now more prominent */}
+                  <div className="inline-block mt-4 text-black font-black text-sm uppercase tracking-wider group">
+                    <span className="flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                      Click to view 
+                      <span className="text-lg">→</span>
+                    </span>
+                    <div className="h-1 bg-black w-full mt-1 transform origin-left group-hover:scale-x-110 transition-transform duration-300"></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <DetailModalView
+        isOpen={!!selectedProject}
+        type="project"
+        data={selectedProject}
+        onClose={handleCloseModal}
+      />
+    </>
   );
 }
+

@@ -10,8 +10,8 @@ const particleCanvasController = {
 
     if (!model.isRunning) return;
 
-    // Clear canvas with semi-transparent background for trail effect
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+    // Clear canvas
+    ctx.fillStyle = 'rgba(248, 250, 252, 1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Emit particles
@@ -19,10 +19,6 @@ const particleCanvasController = {
 
     // Update physics
     particleSystem.update();
-
-    // Update wind
-    model.incrementTime();
-    particleSystem.updateWind(model.getTime());
 
     // Render particles
     particleSystem.render(ctx);
@@ -58,7 +54,7 @@ const particleCanvasController = {
     this.resizeCanvas(canvas);
   },
 
-  emitAtPosition(x, y, count = 5) {
+  emitAtPosition(x, y, count = 3) {
     const model = particleCanvasModel;
     if (model.particleSystem) {
       model.particleSystem.emit(x, y, count);

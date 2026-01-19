@@ -1,8 +1,7 @@
 // Hero Model - Contains hero section data
 const heroModel = {
   name: "Manas Agnihotri",
-  title: "Data Science & ML Engineer",
-  bio: "Master's student at Columbia University specializing in machine learning, causal inference, and data engineering. Building intelligent systems for healthcare and beyond.",
+  bio: "Master's in Data Science student at Columbia University specializing in machine learning, causal inference, and data engineering. Building intelligent systems for healthcare and beyond.",
   location: "New York, NY",
   email: "maa2416@columbia.edu",
   phone: "(332) 267-9106",
