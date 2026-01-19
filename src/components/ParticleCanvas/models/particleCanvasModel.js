@@ -2,7 +2,7 @@
 
 import { ParticleSystem } from "../../../utils/particlePhysics";
 
-let particleSystemInstance = null;
+//let particleSystemInstance = null;
 
 const particleCanvasModel = {
   canvas: null,
@@ -17,7 +17,7 @@ const particleCanvasModel = {
     this.ctx = canvas.getContext('2d');
     this.particleSystem = new ParticleSystem(canvas);
     this.isRunning = true;
-    particleSystemInstance = this.particleSystem;
+    //particleSystemInstance = this.particleSystem;
     return this.particleSystem;
   },
 
