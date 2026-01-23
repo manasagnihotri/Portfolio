@@ -2,6 +2,40 @@
 const experienceModel = {
   experiences: [
     {
+      title: "Research Assistant - Arinzeh Lab",
+      company: "Columbia University Irving Medical Center • New York City, NY",
+      period: "Jan 2026 – Present",
+      achievements: [
+        "Architect an End-to-End NLP Pipeline capable of programmatically scanning thousands of scientific papers to synthesize biological insights that would take human researchers years to manually review.",
+        "Identify Novel Therapeutic Targets for Osteoarthritis (OA) by extracting complex relationships between genes, proteins, and cartilage regeneration pathways from unstructured text.",
+        "Bridge \"Dry-Lab\" and \"Wet-Lab\" Research by translating high-level biological questions into technical data mining strategies to inform physical biomaterial experiments."
+      ],
+      detailedDescription: "In collaboration with the Columbia Department of Biomedical Engineering, this project focuses on accelerating the discovery of treatments for Osteoarthritis (OA), a degenerative joint disease. The primary challenge is the overwhelming volume of scientific literature; my role is to use Text Mining and Knowledge Base Construction to identify novel therapeutic targets that can be used in the lab's cartilage regeneration strategies.\n\nI developed a pipeline to automate Information Retrieval from the PubMed/PMC databases, followed by Named Entity Recognition (NER) to tag specific biological entities like chondrocytes and signaling proteins. By utilizing specialized transformer models, I perform Relationship Extraction to determine the directionality of biological effects (e.g., whether a protein inhibits or promotes cartilage decay). The final output is a structured knowledge base that provides the lab with a prioritized list of targets for experimental validation in their scaffold and biomaterial studies.",
+      technologies: ["NLP", "Large Language Models (LLMs)", "BioBERT", "scispaCy", "SQL", "ETL", "Data Modeling", "Cloud Infrastructure", "Knowledge Graphs", "Bio-Entity Extraction"]
+    },
+    {
+      title: "Teaching Assistant II - GIS and Spatial Analysis",
+      company: "QMSS Department, Columbia University • New York City, NY",
+      period: "Jan 2026 – Present",
+      achievements: [
+        "Facilitate technical labs for a graduate-level cohort, guiding students through complex spatial data workflows and the implementation of Geographic Information Systems (GIS) in social science research.", 
+        "Mentor students in advanced spatial modeling, providing hands-on support for Exploratory Spatial Data Analysis (ESDA), spatially weighted regressions, and space-time models.", 
+        "Optimize student learning by troubleshooting R-based spatial packages and clarifying data binning methodologies such as Quantile and Jenks Natural Breaks."
+      ],
+      detailedDescription: "As a Teaching Assistant for this graduate course, I support the instruction of advanced spatial statistics and GIS techniques applied to social demography and public policy. The course bridges the gap between traditional social science and geographic data science, focusing on how location-based data can reveal patterns in social phenomena.\n\n My role involves assisting students in mastering the transition from raw spatial data to sophisticated visualizations, including choropleth maps, cartograms, and micromaps. I provide technical guidance on building and managing spatial databases and help students implement complex statistical models that account for spatial autocorrelation and temporal shifts. By facilitating weekly labs, I ensure students can independently use open-source software to perform high-level exploratory data analysis and predictive modeling on real-world social datasets",
+    },
+    {
+      title: "Teaching Assistant - Modeling and Performance Evaluation",
+      company: "Computer Science Department, Columbia University • New York City, NY",
+      period: "Sept 2025 – Dec 2025",
+      achievements: [
+        "Managed academic operations and grading for a cohort of 60 students, ensuring the application of system modeling concepts.",
+        "Facilitated technical problem-solving sessions focusing on system architecture efficiency and performance optimization.",
+        "Evaluated complex data models to identify system bottlenecks, a skill directly transferable to optimizing municipal service delivery and government operations."
+      ],
+      detailedDescription: "In this role, I served as a Teaching Assistant for a core graduate course focused on the mathematical modeling of systems where uncertainty plays a critical role. The course emphasizes the use of stochastic processes to evaluate the performance of industrial and service systems.\n\nMy responsibilities included supporting students as they navigated complex topics such as discrete and continuous-time Markov chains, birth-death processes, and various queueing models (M/M/1, M/G/1). I was responsible for grading weekly assignments, ensuring that students correctly applied performance metrics like throughput, utilization, and mean waiting times to evaluate system efficiency. By acting as a bridge between theoretical probability and practical performance evaluation, I helped students develop the analytical tools necessary for operations research and systems engineering.",
+    },
+    {
       title: "Data Analyst Intern",
       company: "Sidhman Technologies • Nashik, India",
       period: "Jan 2025 – Apr 2025",

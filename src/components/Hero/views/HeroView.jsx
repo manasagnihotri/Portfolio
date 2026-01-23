@@ -1,6 +1,5 @@
 import React from 'react';
 import heroModel from '../models/heroModel';
-import heroController from '../controllers/heroController';
 
 export default function HeroView() {
   const heroData = heroModel.getHeroData();
@@ -35,33 +34,12 @@ export default function HeroView() {
           {heroData.bio}
         </p>
 
-        {/* Buttons */}
-        <div className="flex gap-4 justify-center flex-wrap pt-4">
-          <button 
-            onClick={() => heroController.handleViewWorkClick()}
-            className="px-8 py-3 bg-black rounded-lg font-bold text-white hover:bg-slate-800 transition shadow-xl hover:shadow-2xl transform hover:scale-110 hover:-translate-y-2"
-          >
-            View My Work
-          </button>
-          <button 
-            onClick={() => heroController.handleContactClick()}
-            className="px-8 py-3 border-4 border-black rounded-lg font-bold text-black hover:bg-slate-100 transition transform hover:scale-110 hover:-translate-y-2 shadow-lg hover:shadow-2xl"
-          >
-            Get in Touch
-          </button>
-        </div>
-
         {/* Contact Info */}
         <div className="mt-12 flex justify-center gap-8 text-sm text-slate-600 flex-wrap">
           <span className="flex items-center gap-2">
             <span>📍</span> {heroData.contact.location}
           </span>
-          <span className="flex items-center gap-2">
-            <span>📧</span> {heroData.contact.email}
-          </span>
-          <span className="flex items-center gap-2">
-            <span>📱</span> {heroData.contact.phone}
-          </span>
+          
         </div>
 
         

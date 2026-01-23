@@ -21,7 +21,10 @@ export default function SkillsView() {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`${colors[index % colors.length]} border-4 border-black p-8 md:p-10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transform transition-all duration-300`}
+              className={`${colors[index % colors.length]} border-8 border-black p-8 md:p-10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transform transition-all duration-300`}
+              style={{
+                boxShadow: 'inset -4px -4px 0px rgba(0, 0, 0, 0.2), inset 4px 4px 0px rgba(255, 255, 255, 0.3), 0 8px 0px rgba(0, 0, 0, 0.15)'
+              }}
             >
               <h3 className="text-2xl md:text-3xl font-black text-black uppercase mb-8 tracking-tight">
                 {category.title}

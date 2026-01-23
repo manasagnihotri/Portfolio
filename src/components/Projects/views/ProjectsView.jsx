@@ -26,7 +26,7 @@ export default function ProjectsView() {
 
   return (
     <>
-      <section id="projects" className="py-20 px-6 bg-white">
+      <section id="projects" className="py-20 px-6 bg-green-50">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-5xl md:text-6xl font-bold text-black uppercase tracking-tight">
@@ -41,7 +41,10 @@ export default function ProjectsView() {
                 <div
                   key={index}
                   onClick={() => handleProjectClick(project)}
-                  className={`${color.bg} border-4 ${color.border} p-8 md:p-10 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-3 shadow-lg`}
+                  className={`${color.bg} border-8 ${color.border} p-8 md:p-10 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-3 shadow-lg hover:brightness-110`}
+                  style={{
+                    boxShadow: 'inset -4px -4px 0px rgba(0, 0, 0, 0.2), inset 4px 4px 0px rgba(255, 255, 255, 0.3), 0 8px 0px rgba(0, 0, 0, 0.15)'
+                  }}
                 >
                   {/* Category Tag */}
                   <div className="mb-4 inline-block">
